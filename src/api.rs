@@ -1,7 +1,7 @@
 use eowordle_lib::EnemyDiff;
 use reqwasm::http::{Request, RequestMode};
 
-const ENDPOINT: &str = "http://localhost:3010";
+const ENDPOINT: &str = "https://eowordles-qb4c.shuttle.app";
 
 fn make_route(route: impl AsRef<str>) -> String {
     format!("{ENDPOINT}{}", route.as_ref())

@@ -12,7 +12,7 @@ serde_json = "1.0.142"
 
 [dependencies.eowordle-lib]
 git = "https://github.com/hexdecima/eowordles-lib"
-rev = "185bc850c6ae36dc4d63121f9dd1ef698bac4f13"
+rev = "a91cbd38534c61e9091f92cab3e77d283b52abe3"
 
 [profile.release]
 lto = true
