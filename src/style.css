@@ -120,8 +120,12 @@ body {
   width: 12%;
 }
 
+.guess-defence {
+  width: 4%;
+}
+
 .guess-life {
-  width: 6%;
+  width: 7%;
 }
 
 .guess-coins {
@@ -129,7 +133,7 @@ body {
 }
 
 .guess-environments {
-  width: 35%;
+  width: 30%;
 }
 
 .guess-layers {
