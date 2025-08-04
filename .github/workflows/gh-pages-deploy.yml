@@ -54,26 +54,26 @@ jobs:
 
 
       # Deploy to gh-pages branch
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist
+      # - name: Deploy 🚀
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     folder: dist
 
 
       # Deploy with Github Static Pages
-      #
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v4
-      #   with:
-      #     enablement: true
-      #     # token:
-      #
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v2
-      #   with:
-      #     path: './dist'
-      #
-      # - name: Deploy to GitHub Pages 🚀
-      #   id: deployment
-      #   uses: actions/deploy-pages@v3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        with:
+          enablement: true
+          # token:
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v3
 
