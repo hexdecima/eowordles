@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EOWordles</title>
+    <link rel="stylesheet" href="eowordles/style-efce982ba1dadcd6.css" integrity="sha384-AWW/TcUld5ti8zC+DwPX4Gu2L1WrCgCEdYvwoH4S/khBj4/Eqa2Vq1Iiz4hfNHVj"/>
+    
+  <link rel="modulepreload" href="eowordles/eowordles-web-f14ab2b16ada5bf3.js" crossorigin="anonymous" integrity="sha384-yhkWQNWOrLY0EpjEEt3k9bfR/4/DmJ/hqLNbnQYb8aKfoTc7BvTmyAolMmPE/C63"><link rel="preload" href="eowordles/eowordles-web-f14ab2b16ada5bf3_bg.wasm" crossorigin="anonymous" integrity="sha384-OlfqISbsMAu6XPpPk77R9V8UySXGRbGjGYXU4cm1CFnQBS/HOQFqVNmm8pZU2zv8" as="fetch" type="application/wasm"></head>
+  <body>
+<script type="module">
+import init, * as bindings from 'eowordles/eowordles-web-f14ab2b16ada5bf3.js';
+const wasm = await init({ module_or_path: 'eowordles/eowordles-web-f14ab2b16ada5bf3_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>
