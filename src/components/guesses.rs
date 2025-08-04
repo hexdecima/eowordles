@@ -54,7 +54,7 @@ pub fn guesses() -> impl IntoView {
 
 pub fn guess(enemy: &Enemy, diff: &EnemyDiff) -> impl IntoView {
     tr().class("guess").child((
-        guess_name(enemy.name.to_owned()),
+        guess_name(enemy.name.to_owned(), diff.name),
         guess_life(enemy.life, &diff.life),
         guess_defence(enemy.defence, &diff.defence),
         guess_coins(&enemy.coins, &diff.coins),
@@ -64,9 +64,11 @@ pub fn guess(enemy: &Enemy, diff: &EnemyDiff) -> impl IntoView {
     ))
 }
 
-fn guess_name(name: impl AsRef<str>) -> impl IntoView {
+fn guess_name(name: impl AsRef<str>, correct: bool) -> impl IntoView {
+    let colour = if correct { Colour::Green } else { Colour::Red };
+
     td().class("guess-name guess-cell")
-        .child(p().child(name.as_ref().to_owned()))
+        .child(p().child(coloured(name.as_ref().to_owned(), colour)))
 }
 
 fn guess_life(life: u16, diff: &OrderingText) -> impl IntoView {
