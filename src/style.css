@@ -185,8 +185,13 @@ body {
   align-items: center;
 }
 
-#victory b {
+#victory b:not(#guesses-counter) {
   font-size: 4rem;
+}
+
+#guesses-counter {
+  font-size: 2rem;
+  margin-top: 12px;
 }
 
 #victory p {
