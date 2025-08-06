@@ -4,7 +4,7 @@ pub fn info() -> impl IntoView {
     div().id("info").child((
         p().child((
             "Made with 💜 by ",
-            a().child("Hexdecima").href("https://github.com/hexdecima"),
+            a().child("Hexdecima").href("https://mai.tilde.team/en/"),
             "."
         )),
         p().child((
