@@ -4,7 +4,7 @@ use crate::components::{guesses, searcher, info, intro};
 use components::victory;
 use data::Guess;
 use eowordle_lib::Enemy;
-use leptos::{html::*, prelude::*};
+use leptos::{html::*, prelude::*, task};
 
 mod components;
 mod data;
@@ -18,9 +18,15 @@ pub fn app() -> impl IntoView {
         GuessManager::default()
     );
     let ui_signal = RwSignal::new(UIManager::default());
+    let yesterday = RwSignal::<Option<Enemy>>::new(None);
 
     provide_context(GuessContext(guess_signal.0, guess_signal.1));
     provide_context(ui_signal);
+    provide_context(yesterday);
+
+    task::spawn_local(async move {
+        yesterday.set(api::get_yesterday().await);
+    });
 
     let ui = use_context::<RwSignal<UIManager>>().unwrap();
 
