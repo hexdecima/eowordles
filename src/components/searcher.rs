@@ -52,7 +52,9 @@ pub fn picker_item(enemy: Enemy) -> impl IntoView {
 
     button()
         .class("picker-item")
-        .child(text)
+        .child((
+                img().src(format!("/assets/enemies/{}.gif", enemy.id)).aria_label(enemy.name.clone()),
+                text))
         .on(ev::click, move |_| {
             let enemy = enemy.clone();
 

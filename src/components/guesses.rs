@@ -26,35 +26,37 @@ fn make_arrow(o: &OrderingText) -> String {
 pub fn guesses() -> impl IntoView {
     let GuessContext(guess_reader, _) = use_context::<GuessContext>().unwrap();
 
-    table().id("guesses").child((
-        tr().id("guesses-header").child((
-            th().class("guess-name guess-cell").child("Name"),
-            th().class("guess-life guess-cell").child("Life"),
-            th().class("guess-defence guess-cell").child("Defence"),
-            th().class("guess-coins guess-cell").child("Coins"),
-            th().class("guess-environments guess-cell")
-                .child("Environments"),
-            th().class("guess-layers guess-cell").child("Layers"),
-            th().class("guess-rarity guess-cell").child("Rarity"),
-        )),
-        (if guess_reader.get().is_empty() {
-            p().id("guess-none").child("Guesses will appear here.").into_any()
-        } else {
-            (move || {
+    if guess_reader.get().is_empty() {
+        p().id("guess-none")
+            .child("Guesses will appear here.")
+            .into_any()
+    } else {
+        table()
+            .id("guesses")
+            .child((
+                tr().id("guesses-header").child((
+                    th().class("guess-image guess-cell").child("NPC"),
+                    th().class("guess-life guess-cell").child("Life"),
+                    th().class("guess-defence guess-cell").child("Defence"),
+                    th().class("guess-coins guess-cell").child("Coins"),
+                    th().class("guess-environments guess-cell")
+                        .child("Environments"),
+                    th().class("guess-layers guess-cell").child("Layers"),
+                    th().class("guess-rarity guess-cell").child("Rarity"),
+                )),
                 guess_reader
                     .get()
                     .iter()
                     .map(|g| guess(&g.enemy, &g.diff))
-                    .collect_view()
-            })()
+                    .collect_view(),
+            ))
             .into_any()
-        }),
-    ))
+    }
 }
 
 pub fn guess(enemy: &Enemy, diff: &EnemyDiff) -> impl IntoView {
     tr().class("guess").child((
-        guess_name(enemy.name.to_owned(), diff.name),
+        guess_image(enemy.id, diff.name),
         guess_life(enemy.life, &diff.life),
         guess_defence(enemy.defence, &diff.defence),
         guess_coins(&enemy.coins, &diff.coins),
@@ -64,11 +66,13 @@ pub fn guess(enemy: &Enemy, diff: &EnemyDiff) -> impl IntoView {
     ))
 }
 
-fn guess_name(name: impl AsRef<str>, correct: bool) -> impl IntoView {
-    let colour = if correct { Colour::Green } else { Colour::Red };
+fn guess_image(id: u16, correct: bool) -> impl IntoView {
+    let hl = if correct { "guess-correct" } else { "guess-wrong" };
+    let classes = format!("guess-image guess-cell {hl}");
 
-    td().class("guess-name guess-cell")
-        .child(p().child(coloured(name.as_ref().to_owned(), colour)))
+    td().class(classes).child(
+        img().src(format!("/assets/enemies/{}.gif", id))
+    )
 }
 
 fn guess_life(life: u16, diff: &OrderingText) -> impl IntoView {
