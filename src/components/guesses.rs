@@ -71,7 +71,7 @@ fn guess_image(id: u16, correct: bool) -> impl IntoView {
     let classes = format!("guess-image guess-cell {hl}");
 
     td().class(classes).child(
-        img().src(format!("/assets/enemies/{}.gif", id))
+        img().src(format!("assets/enemies/{}.gif", id))
     )
 }
 
