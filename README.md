@@ -13,7 +13,7 @@ Make changes to `./src` and watch changes by running `trunk run --open`.
 ## Features 
 - [x] Show amount of guesses at the end. 
 - [x] Show NPC sprites (note: not all animated yet).
-- [ ] Show yesterday's NPC.
+- [x] Show yesterday's NPC.
 - [ ] Show a rough estimate based on guesses.
 - [ ] Remember guesses between refreshes.
 
