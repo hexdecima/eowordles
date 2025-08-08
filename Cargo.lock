@@ -328,7 +328,7 @@ dependencies = [
 [[package]]
 name = "eowordle-lib"
 version = "0.0.1"
-source = "git+https://github.com/hexdecima/eowordles-lib?rev=bc43796b07b382ce65bc947153dcfa66fa2d965b#bc43796b07b382ce65bc947153dcfa66fa2d965b"
+source = "git+https://github.com/hexdecima/eowordles-lib?rev=4b3f663fc7b93c9d8131cd126f05496be4f3d214#4b3f663fc7b93c9d8131cd126f05496be4f3d214"
 dependencies = [
  "serde",
  "serde_json",
