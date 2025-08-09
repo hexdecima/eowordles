@@ -98,13 +98,24 @@ fn guess_coins(coins: &Coins, diff: &OrderingText) -> impl IntoView {
 
 fn guess_environments(envs: &[Environment], diff: &EnvironmentDiff) -> impl IntoView {
     let mut items = Vec::with_capacity(envs.len());
+    let colour = if diff.right.is_empty() {
+        // If nothing is right.
+        Colour::Red
+    } else if diff.missing {
+        // If something is right but also missing.
+        Colour::Yellow
+    } else {
+        // If something is right and nothing is missing, then everything is right.
+        Colour::Green
+    };
+
     diff.right
         .iter()
-        .map(|env| coloured(env.to_string(), Colour::Green))
+        .map(|env| coloured(env.to_string(), colour.clone()))
         .for_each(|e| items.push(e));
     diff.wrong
         .iter()
-        .map(|env| coloured(env.to_string(), Colour::Red))
+        .map(|env| coloured(env.to_string(), colour.clone()))
         .for_each(|e| items.push(e));
 
     td().class("guess-environments guess-cell")
@@ -113,13 +124,24 @@ fn guess_environments(envs: &[Environment], diff: &EnvironmentDiff) -> impl Into
 
 fn guess_layers(layers: &[Layer], diff: &LayerDiff) -> impl IntoView {
     let mut items = Vec::with_capacity(layers.len());
+    let colour = if diff.right.is_empty() {
+        // If nothing is right.
+        Colour::Red
+    } else if diff.missing {
+        // If something is right but also missing.
+        Colour::Yellow
+    } else {
+        // If something is right and nothing is missing, then everything is right.
+        Colour::Green
+    };
+
     diff.right
         .iter()
-        .map(|lay| coloured(lay.to_string(), Colour::Green))
+        .map(|lay| coloured(lay.to_string(), colour))
         .for_each(|e| items.push(e));
     diff.wrong
         .iter()
-        .map(|lay| coloured(lay.to_string(), Colour::Red))
+        .map(|lay| coloured(lay.to_string(), colour))
         .for_each(|e| items.push(e));
 
     td().class("guess-layers guess-cell")

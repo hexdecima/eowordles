@@ -1,5 +1,6 @@
 use leptos::{html::*, prelude::*};
 
+#[derive(Copy, Clone)]
 pub enum Colour {
     Yellow,
     Green,
@@ -17,7 +18,13 @@ impl Colour {
     }
 }
 
-pub fn coloured(text: impl AsRef<str>, colour: Colour) -> impl IntoView {
+impl AsRef<Colour> for Colour {
+    fn as_ref(&self) -> &Colour {
+        self
+    }
+}
+
+pub fn coloured(text: impl AsRef<str>, colour: impl AsRef<Colour>) -> impl IntoView {
     p().child(text.as_ref().to_owned())
-        .class(format!("coloured {}", colour.css_class()))
+        .class(format!("coloured {}", colour.as_ref().css_class()))
 }
