@@ -1,4 +1,4 @@
-use eowordle_lib::{enemies::list_enemies, Enemy};
+use eowordle_lib::{enemies::list_enemies, prelude::Enemy};
 use leptos::{attr::Value, ev, html::*, prelude::*, task, IntoView};
 
 use crate::{api, data::Guess, GuessContext, UIManager};

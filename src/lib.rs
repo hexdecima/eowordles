@@ -3,7 +3,7 @@ use std::ops::Deref;
 use crate::components::{guesses, searcher, info, intro};
 use components::victory;
 use data::Guess;
-use eowordle_lib::Enemy;
+use eowordle_lib::prelude::Enemy;
 use leptos::{html::*, prelude::*, task};
 
 mod components;

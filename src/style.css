@@ -8,8 +8,12 @@
   margin: 0;
   padding: 0;
   --purple: #9D70EB;
+  --bright-purple: #caaefc;
   --blue: #B5FFFF;
   --pink: #FFADFF;
+  --green: #85ed65;
+  --red: #ef5368;
+  --yellow: #f2ef65;
 }
 
 body {
@@ -28,9 +32,31 @@ body {
   margin: 24px 0;
 }
 
+@keyframes text-glint {
+  0% {
+    text-shadow: none;
+  }
+  5% {
+    text-shadow: 1px 0 0 var(--bright-purple);
+  }
+  10% {
+    text-shadow: 0 1px 0 var(--bright-purple);
+  }
+  15% {
+    text-shadow: -1px 0 0 var(--bright-purple);
+  }
+  20% {
+    text-shadow: 0 -1px 0 var(--bright-purple);
+  }
+  25% {
+    text-shadow: none;
+  }
+}
+
 #intro h1 {
   font-size: 6em;
   color: var(--purple);
+  animation: 6s ease-out 0.25s infinite text-glint;
 }
 
 #intro p {
@@ -96,6 +122,7 @@ body {
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;
+  gap: 6px;
 }
 
 #guesses-header {
@@ -136,11 +163,11 @@ body {
 }
 
 .guess-correct {
-  border: 4px solid #0f0;
+  border-bottom: 4px solid var(--green);
 }
 
 .guess-wrong {
-  border: 4px solid #f00;
+  border-bottom: 4px solid var(--red);
 }
 
 .guess-defence {
@@ -155,12 +182,16 @@ body {
   width: 12%;
 }
 
-.guess-environments {
-  width: 30%;
+.guess-biomes {
+  width: 16%;
+}
+
+.guess-events {
+  width: 16%;
 }
 
 .guess-layers {
-  width: 25%;
+  width: 23%;
 }
 
 .guess-rarity {
@@ -171,7 +202,6 @@ body {
   width: 100%;
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid white;
 }
 
 .guess-group {
@@ -181,21 +211,26 @@ body {
 }
 
 .coloured {
-  color: #000;
+  color: #fff;
+  text-shadow: 0 0 1px var(--blue);
   padding: 4px 6px;
   text-align: center;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-radius: 0;
+  background: #000;
 }
 
 .coloured-red {
-  background: #f00;
+  border-color: var(--red);
 }
 
 .coloured-yellow {
-  background: #ff0;
+  border-color: var(--yellow);
 }
 
 .coloured-green {
-  background: #0f0;
+  border-color: var(--green);
 }
 
 #victory {
@@ -263,7 +298,7 @@ body {
 #yesterday img {
   max-width: 70px;
   max-height: 70px;
-  border: 2px solid var(--purple);
+  border-bottom: 4px solid var(--purple);
   padding: 6px;
 }
 

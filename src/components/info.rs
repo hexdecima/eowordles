@@ -1,4 +1,4 @@
-use eowordle_lib::Enemy;
+use eowordle_lib::prelude::Enemy;
 use leptos::{html::*, prelude::*};
 
 pub fn info() -> impl IntoView {
