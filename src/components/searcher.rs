@@ -44,8 +44,6 @@ pub fn searcher() -> impl IntoView {
 
 
 pub fn picker_item(enemy: Enemy) -> impl IntoView {
-    let text = format!("{} / {} life / {} defence / {}", enemy.name, enemy.life, enemy.defence, enemy.rarity);
-
     let GuessContext(guess_reader, guess_writer) = use_context::<GuessContext>().unwrap();
     let ui = use_context::<RwSignal<UIManager>>().unwrap();
 
@@ -53,7 +51,14 @@ pub fn picker_item(enemy: Enemy) -> impl IntoView {
         .class("picker-item")
         .child((
                 img().src(format!("assets/enemies/{}.gif", enemy.id)).aria_label(enemy.name.clone()),
-                text))
+            b().child(enemy.name.clone()),
+            " / ",
+            b().child(format!("{}", enemy.life)),
+            " life / ",
+            b().child(format!("{}", enemy.defence)),
+            " defence / ",
+            b().child(format!("{}", enemy.rarity))
+        ))
         .on(ev::click, move |_| {
             let enemy = enemy.clone();
 

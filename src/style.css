@@ -26,6 +26,10 @@ body {
   align-items: center;
 }
 
+b {
+  color: var(--bright-purple);
+}
+
 #intro {
   display: flex;
   flex-direction: column;
@@ -279,7 +283,7 @@ body {
   flex-direction: column;
   justify-content: center;
   margin-top: 140px;
-  gap: 80px;
+  gap: 60px;
 
   font-size: 2em;
 }
