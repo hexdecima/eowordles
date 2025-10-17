@@ -304,12 +304,38 @@ b {
   max-height: 70px;
   border-bottom: 4px solid var(--purple);
   padding: 6px;
+  margin-bottom: 12px;
 }
 
 #info #text {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+#status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  gap: 8px;
+  margin-top: 20%;
+  padding: 2rem 3rem;
+
+  border: 2px solid var(--purple);
+  border-radius: 6px;
+  background: #000a;
+
+  font-size: 2.5em;
+}
+
+#status img {
+  width: 60px;
+  height: 60px;
+
+  margin: 20px 0;
+
+  align-self: center;
 }
 
 a {

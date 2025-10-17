@@ -1,7 +1,7 @@
 use eowordle_lib::{enemies::list_enemies, prelude::Enemy};
 use leptos::{attr::Value, ev, html::*, prelude::*, task, IntoView};
 
-use crate::{api, data::Guess, GuessContext, UIManager};
+use crate::{api, data::Guess, GuessContext, Screen, UIManager};
 
 pub fn searcher() -> impl IntoView {
     let enemies = list_enemies();
@@ -80,7 +80,7 @@ pub fn picker_item(enemy: Enemy) -> impl IntoView {
 
                 if diff.is_same() {
                     guess_writer.update(|g| g.correct = Some(enemy.clone()));
-                    ui.update(|ui| ui.show_victory = true);
+                    ui.update(|ui| ui.screen = Screen::Victory );
                 }
             });
 

@@ -1,6 +1,6 @@
 use leptos::{ev, html::*, prelude::*};
 
-use crate::{GuessContext, UIManager};
+use crate::{GuessContext, Screen, UIManager};
 
 pub fn victory() -> impl IntoView {
     let GuessContext(guess_reader, _) = use_context::<GuessContext>().unwrap();
@@ -23,7 +23,7 @@ pub fn victory() -> impl IntoView {
         b().child("That's it! The answer was"),
         p().child(format!("{}!", answer())),
         button().child("Back").on(ev::click, move |_| {
-            ui.update(|ui| ui.show_victory = false);
+            ui.update(|ui| ui.screen = Screen::Game );
         }),
         b().id("guesses-counter")
             .child(counter_text),
