@@ -46,9 +46,9 @@ pub fn app() -> impl IntoView {
             yesterday.set(Some(enemy));
         } else {
             status_data.update(|data| {
-                data.title = Some("Service Unavailable".into());
+                data.title = Some("Thank you for playing!".into());
                 data.description = Some(
-                    "Failed to connect to the game server, likely because it is offline. A few minutes of daily downtime is expected (or rarely a few hours), so you can try again in a bit."
+                    "With me not having much energy to put into this project, and now, Shuttle sunsetting its community tier, there's little point in keeping this project alive. See you around, Terrarian!"
                         .into()
                 );
             });

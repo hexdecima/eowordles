@@ -319,23 +319,22 @@ b {
   align-items: center;
   width: 80%;
   gap: 8px;
-  margin-top: 20%;
+  margin-top: 10%;
   padding: 2rem 3rem;
 
-  border: 2px solid var(--purple);
-  border-radius: 6px;
   background: #000a;
 
   font-size: 2.5em;
 }
 
 #status img {
-  width: 60px;
-  height: 60px;
-
   margin: 20px 0;
 
   align-self: center;
+}
+
+#status a::before {
+  content: "- ";
 }
 
 a {
